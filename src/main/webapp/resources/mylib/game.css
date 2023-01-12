@@ -1,0 +1,35 @@
+#game-main {
+    display: flex;
+}
+
+#game-board {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 800px;
+    width: 800px;
+    height: 800px;
+    padding: 100px;
+    background-color: bisque;
+}
+
+.game {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+#chat-board {
+    position: relative;
+    display: inline-block;
+    flex: 1;
+    background-color: blue;
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
