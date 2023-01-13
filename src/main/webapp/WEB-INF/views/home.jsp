@@ -36,7 +36,8 @@
 					<li><a href="signPage">회원가입</a></li>
 				</c:if>
 				<c:if test="${not empty loginID}">
-					<li>${not empty loginID}</li>
+					<li>${loginID}</li>
+					<li><a href="logout">logout</a></li>
 				</c:if>
 			</ul>
 		</div>

@@ -9,9 +9,55 @@
     <meta charset="UTF-8">
     <title>game</title>
     <script src="resources/mylib/game.js" defer></script>
+    <!-- <script src="resources/mylib/chat.js" defer></script> -->
     <link rel="stylesheet" href="resources/mylib/home.css">
     <link rel="stylesheet" href="resources/mylib/game.css">
 </head>
+
+<script type="text/javascript">
+
+
+window.onload = () =>{
+	var ws;
+	var chating = document.getElementById('chating');
+	var sendBtn = document.getElementById('sendBtn');
+	var chatting = document.getElementById('chatting');
+	
+	console.log(${loginID})
+	// wsOpen
+	ws = new WebSocket("ws://"+ location.host + "/ws/game");
+	
+	// wsEvent
+	ws.onopen = data => {}
+	
+	ws.onmessage = data => {
+		var msg = data.data;
+		if (msg != null && msg.trim() != '') {
+			chating.innerHTML += "<p>" + msg + "</p>";
+		}
+	} // onmessage
+	
+	document.addEventListener('keypress', e => {
+		if(e.keyCode == 13) { // Enter
+			var userName = ${loginID};
+			var chatting = document.getElementById('chatting');
+			var msg = chatting.value;
+			ws.send(userName + " : " + msg);
+			chatting.value = '';
+		}
+	});
+	
+	sendBtn.addEventListener('click', ()=>{
+		var userName = ${loginID};
+		var chatting = document.getElementById('chatting');
+		var msg = chatting.value;
+		ws.send(userName + " : " + msg);
+		chatting.value = '';
+	})
+	 
+} // onload
+
+</script>
 
 <body>
 
@@ -50,8 +96,22 @@
 
         <div id="chat-board">
             <div class="h1 chat-title">CHATTING BOARD</div>
-
-            <div class="chat-detail"></div>
+            <c:forEach items="${chatUser}" var="user" >
+            	<div>${user}</div>
+            </c:forEach>
+			
+            <div id="chating" class="chating">
+		</div>
+		
+		<div id="yourMsg">
+			<table class="inputTable">
+				<tr>
+					<th>메시지</th>
+					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
+					<th><button id="sendBtn">보내기</button></th>
+				</tr>
+			</table>
+		</div>
         </div>
     </main>
 

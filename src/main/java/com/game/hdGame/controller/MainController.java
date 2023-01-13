@@ -1,11 +1,23 @@
 package com.game.hdGame.controller;
 
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.annotation.RequestScope;
+
+import com.game.hdGame.service.UserService;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping({"/", "home"})
 	public String home() {
@@ -13,7 +25,12 @@ public class MainController {
 	}
 	
 	@RequestMapping("game")
-	public String game() {
+	public String game(HttpServletRequest request, Model md) {
+		List<String> list = new LinkedList<String>();
+		list.add((String) request.getSession().getAttribute("loginID"));
+		
+		md.addAttribute("chatUser", list);
+		System.out.println(list);
 		return "pages/game";
 	}
 
@@ -35,5 +52,12 @@ public class MainController {
 	@RequestMapping("signPage")
 	public String signIn() {
 		return "pages/signIn";
+	}
+	
+	@RequestMapping(value = "chatremove")
+	public void chatRemove(HttpServletRequest request, Model md) {
+		List<String> list = new LinkedList<String>();
+		list.remove((String) request.getSession().getAttribute("loginID"));
+		md.addAttribute("chatUser", list);
 	}
 }

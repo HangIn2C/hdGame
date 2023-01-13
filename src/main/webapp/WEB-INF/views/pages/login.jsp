@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>login</title>
 </head>
 <body>
-
+	<form action="login" method="post">
+		<input type="text" name="id" placeholder="input ID...">
+		<input type="password" name="password" placeholder="input PASSWORD...">
+		<input type="submit" value="로그인">
+	</form>
 </body>
 </html>
