@@ -16,13 +16,16 @@ Jquery, Ajax
 
 ---
 
-#### Back-End
-Language : Java   
-Framework : SpringBoot, MyBatis, MVC Model2
-WebSocket
+#### Back-End  
+Language : Java  
+Framework : SpringBoot, MyBatis, MVC Model2  
+WebSocket  
+
+---  
+  
+#### Database  
+MySQL  
+
 ---
 
-#### Database
-MySQL
----
-### 주요 기능
+### 주요 기능  
