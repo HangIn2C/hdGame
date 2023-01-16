@@ -1,6 +1,5 @@
 package com.game.hdGame.controller;
 
-import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,35 +23,52 @@ public class MainController {
 		return "home";
 	}
 	
-	@RequestMapping("game")
+	// =============================================
+	
+	@RequestMapping("gamepage")
 	public String game(HttpServletRequest request, Model md) {
 		List<String> list = new LinkedList<String>();
 		list.add((String) request.getSession().getAttribute("loginID"));
 		
 		md.addAttribute("chatUser", list);
 		System.out.println(list);
-		return "pages/game";
+		return "pages/gamePage";
 	}
 
-	@RequestMapping("chatroom")
+	// =============================================
+	
+	@RequestMapping("chatpage")
 	public String chatRoom() {
-		return "pages/chatRoom";
+		return "pages/chatRoomPage";
 	}
 	
-	@RequestMapping("attackboard")
+	// =============================================
+	
+	@RequestMapping("attackboardpage")
 	public String attackBoard() {
-		return "pages/attackBoard";
+		return "pages/attackBoardPage";
 	}
 	
-	@RequestMapping("loginPage")
+	@RequestMapping("attackinsert")
+	public String attackInsertPage() {
+		
+		return "pages/attackInsertPage";
+	}
+	// =============================================
+	
+	@RequestMapping("loginpage")
 	public String login() {
-		return "pages/login";
+		return "pages/loginPage";
 	}
 	
-	@RequestMapping("signPage")
+	// =============================================
+	
+	@RequestMapping("signinpage")
 	public String signIn() {
-		return "pages/signIn";
+		return "pages/signInPage";
 	}
+	
+	// =============================================
 	
 	@RequestMapping(value = "chatremove")
 	public void chatRemove(HttpServletRequest request, Model md) {

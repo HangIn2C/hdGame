@@ -103,7 +103,7 @@ window.onload = () =>{
             <div id="chating" class="chating">
 		</div>
 		
-		<div id="yourMsg">
+		<div id="msg">
 			<table class="inputTable">
 				<tr>
 					<th>메시지</th>

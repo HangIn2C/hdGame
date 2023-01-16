@@ -22,9 +22,9 @@
 		<div class="nav">
 			<ul>
 				<li><a href="/">메인</a></li>
-				<li><a href="game">게임</a></li>
-				<li><a href="chatroom">채팅방</a></li>
-				<li><a href="attachboard">공략게시판</a></li>
+				<li><a href="gamepage">게임</a></li>
+				<li><a href="chatpage">채팅방</a></li>
+				<li><a href="attackboardpage">공략게시판</a></li>
 			</ul>
 		</div>
 
@@ -32,8 +32,8 @@
 			<ul>
 				<li>검색</li>
 				<c:if test="${empty loginID}">
-					<li><a href="loginPage">로그인</a></li>
-					<li><a href="signPage">회원가입</a></li>
+					<li><a href="loginpage">로그인</a></li>
+					<li><a href="signinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${not empty loginID}">
 					<li>${loginID}</li>
@@ -55,10 +55,10 @@
 
 				<div class="slide-button-box">
 					<div class="button">
-						<a href="#">게임 참가</a>
+						<a href="game/chess">게임 참가</a>
 					</div>
 					<div class="button">
-						<a href="#">채팅방 입장</a>
+						<a href="chat/chess">채팅방 입장</a>
 					</div>
 				</div>
 			</div>
@@ -122,7 +122,7 @@
 			</div>
 		</div>
 		<div class="button-box">
-			<div class="button">모든 채팅방</div>
+			<div class="button"><a href="chatpage">모든 채팅방</a></div>
 		</div>
 
 		<!-- ================================================================ -->

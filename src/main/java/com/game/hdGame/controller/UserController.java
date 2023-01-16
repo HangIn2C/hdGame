@@ -30,11 +30,10 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "login")
-	public String login(HttpServletRequest request, UserVO vo) {
+	public String login(HttpServletRequest request, Model md, UserVO vo) {
 		// user id 정보 검색
 		vo = userservice.userDetail(vo);
 		
-		Model mv = null;
 		HttpSession session = request.getSession();
 		
 		// id 확인
@@ -44,12 +43,12 @@ public class UserController {
 				// id & password 완료 되면 session에 저장
 				session.setAttribute("loginID", vo.getId());
 			} else {
-				mv.addAttribute("message", "PASSWORD가 틀렸습니다.");
+				md.addAttribute("message", "PASSWORD가 틀렸습니다.");
 				return "home";
 			} // if ~ else password
 		} else {
 			// id 틀린 경우
-			mv.addAttribute("message", "ID가 틀렸습니다.");
+			md.addAttribute("message", "ID가 틀렸습니다.");
 			return "home";
 		} // if ~ else id
 		return "home";
@@ -57,7 +56,6 @@ public class UserController {
 	
 	@GetMapping(value = "logout")
 	public String logout(HttpServletRequest request) {
-		
 		request.getSession().invalidate();
 		return "home";
 	} // logout
